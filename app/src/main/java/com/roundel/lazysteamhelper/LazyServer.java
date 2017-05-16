@@ -26,4 +26,19 @@ public class LazyServer
                 ", name='" + name + '\'' +
                 '}';
     }
+
+    public int getPort()
+    {
+        return port;
+    }
+
+    public String getHost()
+    {
+        return host;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
 }

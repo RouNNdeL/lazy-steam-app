@@ -10,5 +10,3 @@ gradle.properties
 gradle/
 gradlew
 gradlew.bat
-/app/src/androidTest
-/app/src/test
