@@ -25,8 +25,13 @@ import java.util.Objects;
 public class ServerDiscoveryThread extends Thread
 {
     private static final String TAG = ServerDiscoveryThread.class.getSimpleName();
+
     private static final String DISCOVERY_MESSAGE = "LAZY_STEAM_HELPER_DISCOVERY_REQUEST";
     private static final String DISCOVERY_RESPONSE = "LAZY_STEAM_HELPER_DISCOVERY_RESPONSE";
+    private static final String JSON_COM = "code";
+    private static final String JSON_HOSTNAME = "server_hostname";
+    private static final String JSON_PORT = "communication_port";
+
     private DatagramSocket socket;
     private ServerDiscoveryListener listener;
 
@@ -113,11 +118,11 @@ public class ServerDiscoveryThread extends Thread
                 try
                 {
                     JSONObject response = new JSONObject(message);
-                    if(Objects.equals(response.getString("code"), DISCOVERY_RESPONSE))
+                    if(Objects.equals(response.getString(JSON_COM), DISCOVERY_RESPONSE))
                     {
-                        String hostName = response.getString("server_hostname");
+                        String hostName = response.getString(JSON_HOSTNAME);
                         final String hostAddress = receivePacket.getAddress().getHostAddress();
-                        final int communicationPort = response.getInt("communication_port");
+                        final int communicationPort = response.getInt(JSON_PORT);
 
                         Log.i(TAG, "New server \"" + hostName + "\"at:" + hostAddress + ":" + communicationPort);
 
