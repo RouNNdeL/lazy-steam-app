@@ -3,6 +3,7 @@ package com.roundel.lazysteamhelper;
 import android.app.IntentService;
 import android.content.Intent;
 import android.support.annotation.Nullable;
+import android.widget.Toast;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,8 +16,8 @@ public class NotificationReceiverService extends IntentService implements Server
 {
     private static final String TAG = NotificationReceiverService.class.getSimpleName();
 
-    private static final String EXTRA_NOTIFICATION_BODY = "com.roundel.lazysteamhelper.extra.NOTIFICATION_BODY";
-    private static final String EXTRA_NOTIFICATION_TITLE = "com.roundel.lazysteamhelper.extra.NOTIFICATION_TITLE";
+    public static final String EXTRA_NOTIFICATION_BODY = "com.roundel.lazysteamhelper.extra.NOTIFICATION_BODY";
+    public static final String EXTRA_NOTIFICATION_TITLE = "com.roundel.lazysteamhelper.extra.NOTIFICATION_TITLE";
 
     private static final Pattern REGEX_USERNAME = Pattern.compile("new steam login for (.*)", Pattern.CASE_INSENSITIVE);
     private static final Pattern REGEX_CODE = Pattern.compile("use code ([A-Z\\d]{5})", Pattern.CASE_INSENSITIVE);
@@ -72,10 +73,18 @@ public class NotificationReceiverService extends IntentService implements Server
     }
 
     @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+        LogHelper.d(TAG, "Service has been destroyed");
+    }
+
+    @Override
     public void onServerFound(LazyServer server)
     {
+        Toast.makeText(NotificationReceiverService.this, "Server found", Toast.LENGTH_LONG).show();
         ServerSendingThread thread = new ServerSendingThread(server, mCode, mUsername);
-        thread.run();
+        thread.start();
     }
 
     @Override
@@ -94,6 +103,6 @@ public class NotificationReceiverService extends IntentService implements Server
     {
         ServerDiscoveryThread discoveryThread = new ServerDiscoveryThread();
         discoveryThread.setServerDiscoveryListener(this);
-        discoveryThread.run();
+        discoveryThread.start();
     }
 }

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.roundel.lazysteamhelper">
 
+    <uses-permission-sdk-23 android:name="android.permission.INTERNET"/>
+
     <permission android:name="com.roundel.lazysteamhelper.permission.START_SERVICE"/>
 
     <application
@@ -11,10 +13,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <service
+            android:name=".NotificationReceiverService"
+            android:exported="true"
+            android:permission="com.roundel.lazysteamhelper.permission.START_SERVICE"/>
 
-        <service android:name=".NotificationReceiverService"
-                 android:exported="true"
-                 android:permission="com.roundel.lazysteamhelper.permission.START_SERVICE"/>
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
