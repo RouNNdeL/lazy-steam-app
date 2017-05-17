@@ -128,8 +128,8 @@ public class ServerDiscoveryThread extends Thread
 
                         listener.onServerFound(
                                 new LazyServer(
-                                        hostName,
                                         hostAddress,
+                                        hostName,
                                         communicationPort
                                 ));
                     }

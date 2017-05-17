@@ -82,7 +82,6 @@ public class NotificationReceiverService extends IntentService implements Server
     @Override
     public void onServerFound(LazyServer server)
     {
-        Toast.makeText(NotificationReceiverService.this, "Server found", Toast.LENGTH_LONG).show();
         ServerSendingThread thread = new ServerSendingThread(server, mCode, mUsername);
         thread.start();
     }
