@@ -1,9 +1,13 @@
-package com.roundel.lazysteamhelper;
+package com.roundel.lazysteamhelper.service;
 
 import android.app.IntentService;
 import android.content.Intent;
 import android.support.annotation.Nullable;
-import android.widget.Toast;
+
+import com.roundel.lazysteamhelper.LazyServer;
+import com.roundel.lazysteamhelper.net.ServerDiscoveryThread;
+import com.roundel.lazysteamhelper.net.ServerSendingThread;
+import com.roundel.lazysteamhelper.util.LogHelper;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,8 +26,13 @@ public class NotificationReceiverService extends IntentService implements Server
     private static final Pattern REGEX_USERNAME = Pattern.compile("new steam login for (.*)", Pattern.CASE_INSENSITIVE);
     private static final Pattern REGEX_CODE = Pattern.compile("use code ([A-Z\\d]{5})", Pattern.CASE_INSENSITIVE);
 
+    private static final int DISCOVERY_FREEZTIME = 1000;
+
     private String mCode;
     private String mUsername;
+
+    private long mLastDiscovery;
+    private LazyServer mLatestServer;
 
     /**
      * Creates an IntentService.  Invoked by your subclass's constructor.
@@ -82,14 +91,20 @@ public class NotificationReceiverService extends IntentService implements Server
     @Override
     public void onServerFound(LazyServer server)
     {
-        ServerSendingThread thread = new ServerSendingThread(server, mCode, mUsername);
-        thread.start();
+        if(!server.equals(mLatestServer) || System.currentTimeMillis() - mLastDiscovery > DISCOVERY_FREEZTIME)
+        {
+            mLastDiscovery = System.currentTimeMillis();
+            mLatestServer = server;
+
+            ServerSendingThread thread = new ServerSendingThread(server, mCode, mUsername);
+            thread.start();
+            LogHelper.d(TAG, "Starting ServerSendingThread");
+        }
     }
 
     @Override
     public void onSocketClosed()
     {
-
     }
 
     @Override

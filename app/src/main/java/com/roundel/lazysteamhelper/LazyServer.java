@@ -27,6 +27,29 @@ public class LazyServer
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o)
+    {
+        if(this == o) return true;
+        if(o == null || getClass() != o.getClass()) return false;
+
+        LazyServer that = (LazyServer) o;
+
+        if(port != that.port) return false;
+        if(host != null ? !host.equals(that.host) : that.host != null) return false;
+        return name.equals(that.name);
+
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int result = port;
+        result = 31 * result + (host != null ? host.hashCode() : 0);
+        result = 31 * result + name.hashCode();
+        return result;
+    }
+
     public int getPort()
     {
         return port;

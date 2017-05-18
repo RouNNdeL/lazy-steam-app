@@ -14,11 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <service
-            android:name=".NotificationReceiverService"
+            android:name=".service.NotificationReceiverService"
             android:exported="true"
             android:permission="com.roundel.lazysteamhelper.permission.START_SERVICE"/>
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

@@ -1,12 +1,15 @@
-package com.roundel.lazysteamhelper;
+package com.roundel.lazysteamhelper.ui;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import com.roundel.lazysteamhelper.service.NotificationReceiverService;
 
 public class MainActivity extends AppCompatActivity
 {
 
+    private static final String TAG = MainActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

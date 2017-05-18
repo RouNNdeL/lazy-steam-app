@@ -1,6 +1,7 @@
-package com.roundel.lazysteamhelper;
+package com.roundel.lazysteamhelper.net;
 
-import android.util.Log;
+import com.roundel.lazysteamhelper.LazyServer;
+import com.roundel.lazysteamhelper.util.LogHelper;
 
 import org.json.JSONException;
 import org.json.JSONObject;
