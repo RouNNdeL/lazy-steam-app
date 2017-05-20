@@ -11,7 +11,6 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.nio.charset.Charset;
 import java.util.Objects;
@@ -53,7 +52,7 @@ public class ServerSendingThread extends Thread
         try
         {
             Socket lazySocket = new Socket();
-            lazySocket.connect(new InetSocketAddress(mTarget.getHost(), mTarget.getPort()), mConnectionTimeout);
+            lazySocket.connect(mTarget.getInetSocketAddress(), mConnectionTimeout);
             lazySocket.setSoTimeout(mReceiveTimeout);
 
             JSONObject json = new JSONObject();

@@ -8,8 +8,8 @@ import com.roundel.lazysteamhelper.service.NotificationReceiverService;
 
 public class MainActivity extends AppCompatActivity
 {
-
     private static final String TAG = MainActivity.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -20,6 +20,6 @@ public class MainActivity extends AppCompatActivity
         intent.putExtra(NotificationReceiverService.EXTRA_NOTIFICATION_BODY, "use code AAAAA");
         startService(intent);
 
-        finish();
+
     }
 }

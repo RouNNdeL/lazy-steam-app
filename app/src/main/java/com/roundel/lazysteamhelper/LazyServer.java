@@ -1,53 +1,41 @@
 package com.roundel.lazysteamhelper;
 
+import java.net.InetSocketAddress;
+
 /**
  * Created by Krzysiek on 16/05/2017.
  */
 
 public class LazyServer
 {
-    private int port;
     private String host;
     private String name;
+    private int port;
+    private byte[] key;
+    private boolean local;
 
+    //External server
+    public LazyServer(String host, String name, int port, byte[] key)
+    {
+        this(host, name, port);
+        this.key = key;
+        this.local = false;
+    }
+
+    /**
+     * Local server, used for setup
+     *
+     * @param host hostname or ip address used to connect
+     * @param name name visible to the user
+     * @param port port used for connection
+     */
     public LazyServer(String host, String name, int port)
     {
         this.port = port;
         this.host = host;
         this.name = name;
-    }
-
-    @Override
-    public String toString()
-    {
-        return "LazyServer{" +
-                "port=" + port +
-                ", host='" + host + '\'' +
-                ", name='" + name + '\'' +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o)
-    {
-        if(this == o) return true;
-        if(o == null || getClass() != o.getClass()) return false;
-
-        LazyServer that = (LazyServer) o;
-
-        if(port != that.port) return false;
-        if(host != null ? !host.equals(that.host) : that.host != null) return false;
-        return name.equals(that.name);
-
-    }
-
-    @Override
-    public int hashCode()
-    {
-        int result = port;
-        result = 31 * result + (host != null ? host.hashCode() : 0);
-        result = 31 * result + name.hashCode();
-        return result;
+        this.local = true;
+        this.key = new byte[0];
     }
 
     public int getPort()
@@ -63,5 +51,26 @@ public class LazyServer
     public String getName()
     {
         return name;
+    }
+
+    public byte[] getKey()
+    {
+        return key;
+    }
+
+    public void setKey(byte[] key)
+    {
+        this.key = key;
+        this.local = key == new byte[0];
+    }
+
+    public boolean isLocal()
+    {
+        return local;
+    }
+
+    public InetSocketAddress getInetSocketAddress()
+    {
+        return new InetSocketAddress(getHost(), getPort());
     }
 }
