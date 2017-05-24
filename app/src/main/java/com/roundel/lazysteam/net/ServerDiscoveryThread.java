@@ -1,11 +1,11 @@
-package com.roundel.lazysteamhelper.net;
+package com.roundel.lazysteam.net;
 
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
-import com.roundel.lazysteamhelper.LazyServer;
-import com.roundel.lazysteamhelper.util.LogHelper;
+import com.roundel.lazysteam.LazyServer;
+import com.roundel.lazysteam.util.LogHelper;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,8 +29,8 @@ public class ServerDiscoveryThread extends Thread
 {
     private static final String TAG = ServerDiscoveryThread.class.getSimpleName();
 
-    private static final String DISCOVERY_MESSAGE = "LAZY_STEAM_HELPER_DISCOVERY_REQUEST";
-    private static final String DISCOVERY_RESPONSE = "LAZY_STEAM_HELPER_DISCOVERY_RESPONSE";
+    private static final String DISCOVERY_MESSAGE = "LAZY_STEAM_DISCOVERY_REQUEST";
+    private static final String DISCOVERY_RESPONSE = "LAZY_STEAM_DISCOVERY_RESPONSE";
     private static final String JSON_COM = "com";
     private static final String JSON_HOSTNAME = "server_hostname";
     private static final String JSON_PORT = "communication_port";

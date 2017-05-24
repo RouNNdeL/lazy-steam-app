@@ -1,4 +1,4 @@
-package com.roundel.lazysteamhelper;
+package com.roundel.lazysteam;
 
 import java.net.InetSocketAddress;
 

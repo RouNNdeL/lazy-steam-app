@@ -1,4 +1,4 @@
-package com.roundel.lazysteamhelper.util;
+package com.roundel.lazysteam.util;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

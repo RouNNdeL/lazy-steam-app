@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Lazy Steam Helper</string>
+    <string name="title_activity_server_view">ServerViewActivity</string>
+    <string name="action_settings">Settings</string>
 </resources>

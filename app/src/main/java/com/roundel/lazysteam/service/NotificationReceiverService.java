@@ -1,13 +1,13 @@
-package com.roundel.lazysteamhelper.service;
+package com.roundel.lazysteam.service;
 
 import android.app.IntentService;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 
-import com.roundel.lazysteamhelper.LazyServer;
-import com.roundel.lazysteamhelper.net.ServerDiscoveryThread;
-import com.roundel.lazysteamhelper.net.ServerSendingThread;
-import com.roundel.lazysteamhelper.util.LogHelper;
+import com.roundel.lazysteam.LazyServer;
+import com.roundel.lazysteam.net.ServerDiscoveryThread;
+import com.roundel.lazysteam.net.ServerSendingThread;
+import com.roundel.lazysteam.util.LogHelper;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

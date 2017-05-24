@@ -1,10 +1,10 @@
-package com.roundel.lazysteamhelper.ui;
+package com.roundel.lazysteam.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.roundel.lazysteamhelper.service.NotificationReceiverService;
+import com.roundel.lazysteam.service.NotificationReceiverService;
 
 public class MainActivity extends AppCompatActivity
 {

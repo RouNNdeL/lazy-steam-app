@@ -1,9 +1,9 @@
-package com.roundel.lazysteamhelper.ui;
+package com.roundel.lazysteam.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.roundel.lazysteamhelper.R;
+import com.roundel.lazysteam.R;
 
 public class AddServerActivity extends AppCompatActivity
 {

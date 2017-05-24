@@ -1,4 +1,4 @@
-package com.roundel.lazysteamhelper.util;
+package com.roundel.lazysteam.util;
 
 /**
  * Created by Krzysiek on 18/05/2017.

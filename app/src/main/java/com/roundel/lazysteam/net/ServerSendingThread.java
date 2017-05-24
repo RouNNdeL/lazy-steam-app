@@ -1,7 +1,7 @@
-package com.roundel.lazysteamhelper.net;
+package com.roundel.lazysteam.net;
 
-import com.roundel.lazysteamhelper.LazyServer;
-import com.roundel.lazysteamhelper.util.LogHelper;
+import com.roundel.lazysteam.LazyServer;
+import com.roundel.lazysteam.util.LogHelper;
 
 import org.json.JSONException;
 import org.json.JSONObject;
