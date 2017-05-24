@@ -19,13 +19,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="0dp"
         android:contentDescription="server hostname"
-        android:text="TZC-Laptop"
         android:textAppearance="@style/TextAppearance.ListPrimary"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toRightOf="@+id/server_icon"
         app:layout_constraintRight_toLeftOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/server_icon"
-        app:layout_constraintVertical_chainStyle="spread_inside"/>
+        app:layout_constraintVertical_chainStyle="spread_inside"
+        tools:text="TZC-Laptop"/>
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/server_icon"
@@ -48,11 +48,11 @@
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
         android:layout_marginTop="0dp"
-        android:src="@drawable/ic_desktop_mac_black_24dp"
         app:layout_constraintBottom_toBottomOf="@+id/server_icon"
         app:layout_constraintLeft_toLeftOf="@+id/server_icon"
         app:layout_constraintRight_toRightOf="@+id/server_icon"
-        app:layout_constraintTop_toTopOf="@+id/server_icon"/>
+        app:layout_constraintTop_toTopOf="@+id/server_icon"
+        tools:src="@drawable/ic_desktop_mac_black_24dp"/>
 
     <TextView
         android:id="@+id/server_host"
@@ -62,12 +62,12 @@
         android:layout_marginRight="0dp"
         android:layout_marginTop="8dp"
         android:contentDescription="server host"
-        android:text="123.123.123.123:1234"
         android:textAppearance="@style/TextAppearance.ListSecondary"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="@+id/server_host_name"
         app:layout_constraintRight_toRightOf="@+id/server_host_name"
-        app:layout_constraintTop_toBottomOf="@+id/server_host_name"/>
+        app:layout_constraintTop_toBottomOf="@+id/server_host_name"
+        tools:text="123.123.123.123:1234"/>
 
     <ImageView
         android:id="@+id/imageView"
