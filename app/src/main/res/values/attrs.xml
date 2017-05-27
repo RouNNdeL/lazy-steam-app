@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="alphaPrimary" format="float"/>
+    <attr name="alphaSecondary" format="float"/>
+    <attr name="alphaPrimaryInverse" format="float"/>
+    <attr name="alphaSecondaryInverse" format="float"/>
+</resources>

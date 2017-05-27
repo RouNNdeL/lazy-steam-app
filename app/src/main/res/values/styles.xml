@@ -7,6 +7,10 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorTertiary">#61000000</item>
+        <item name="alphaPrimary">0.87</item>
+        <item name="alphaSecondary">0.54</item>
+        <item name="alphaPrimaryInverse">1</item>
+        <item name="alphaSecondaryInverse">0.7</item>
     </style>
 
     <style name="TextAppearance" parent="TextAppearance.AppCompat"/>

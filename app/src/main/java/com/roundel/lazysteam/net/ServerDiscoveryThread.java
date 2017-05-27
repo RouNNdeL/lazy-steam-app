@@ -102,6 +102,7 @@ public class ServerDiscoveryThread extends Thread
                 }
             }
 
+            //Close the socket after discoveryTimeout millis
             new Handler(Looper.getMainLooper()).postDelayed(() -> socket.close(), discoveryTimeout);
 
             //Wait for a response
@@ -112,7 +113,9 @@ public class ServerDiscoveryThread extends Thread
                 socket.receive(receivePacket);
 
                 //We have a response
-                LogHelper.i(TAG, "Broadcast response from " + receivePacket.getAddress().getHostName() + ": " + receivePacket.getAddress().getHostAddress() + ":" + receivePacket.getPort());
+                LogHelper.i(TAG, "Broadcast response from " + receivePacket.getAddress().getHostName() + ": " +
+                        receivePacket.getAddress().getHostAddress() + ":" +
+                        receivePacket.getPort());
 
                 //Check if the message is correct
                 String message = new String(receivePacket.getData(), Charset.defaultCharset()).trim();
@@ -146,10 +149,13 @@ public class ServerDiscoveryThread extends Thread
         }
         catch(SocketException e)
         {
-            listener.onSocketClosed();
+            if(socket.isClosed())
+                listener.onSocketClosed();
         }
         catch(IOException e)
         {
+            if(socket.isClosed())
+                listener.onSocketClosed();
             e.printStackTrace();
             LogHelper.e(TAG, e.toString());
         }

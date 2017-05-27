@@ -1,4 +1,4 @@
-package com.roundel.lazysteam.ui;
+package com.roundel.lazysteam.ui.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,6 +13,7 @@ import com.roundel.lazysteam.R;
  */
 public class ServerViewActivityFragment extends Fragment
 {
+
 
     public ServerViewActivityFragment()
     {

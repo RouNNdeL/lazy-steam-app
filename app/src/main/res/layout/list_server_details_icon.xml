@@ -23,7 +23,7 @@
         android:textAppearance="@style/TextAppearance.ListPrimary"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toRightOf="@+id/server_icon_bg"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/server_details_icon"
         app:layout_constraintTop_toTopOf="@+id/server_icon_bg"
         app:layout_constraintVertical_chainStyle="spread_inside"
         tools:text="TZC-Laptop"/>
@@ -33,14 +33,13 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginBottom="16dp"
-        android:layout_marginLeft="32dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:src="?android:textColorTertiary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.5"
         app:riv_oval="true"/>
 
     <ImageView
@@ -51,12 +50,13 @@
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
         android:layout_marginTop="0dp"
-        android:tint="?android:textColorPrimaryInverse"
         app:layout_constraintBottom_toBottomOf="@+id/server_icon_bg"
         app:layout_constraintLeft_toLeftOf="@+id/server_icon_bg"
         app:layout_constraintRight_toRightOf="@+id/server_icon_bg"
         app:layout_constraintTop_toTopOf="@+id/server_icon_bg"
-        tools:src="@drawable/ic_desktop_mac_black_24dp"/>
+        tools:alpha="?alphaPrimaryInverse"
+        tools:src="@drawable/ic_desktop_mac_black_24dp"
+        tools:tint="?android:textColorPrimaryInverse"/>
 
     <TextView
         android:id="@+id/server_host"
@@ -72,6 +72,22 @@
         app:layout_constraintRight_toRightOf="@+id/server_name"
         app:layout_constraintTop_toBottomOf="@+id/server_name"
         tools:text="123.123.123.123:1234"/>
+
+    <ImageView
+        android:id="@+id/server_details_icon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="0dp"
+        android:alpha="?alphaPrimary"
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:tint="?android:textColorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_info_outline_black_24dp"
+        tools:ignore="RtlHardcoded"/>
 
 
 </android.support.constraint.ConstraintLayout>

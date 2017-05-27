@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.roundel.lazysteam">
 
+    <uses-permission-sdk-23 android:name="android.permission.CHANGE_WIFI_STATE"/>
     <uses-permission-sdk-23 android:name="android.permission.INTERNET"/>
 
     <permission android:name="com.roundel.lazysteam.permission.START_SERVICE"/>
@@ -18,17 +19,17 @@
             android:exported="true"
             android:permission="com.roundel.lazysteamhelper.permission.START_SERVICE"/>
 
-        <activity android:name="com.roundel.lazysteam.ui.MainActivity">
+        <activity android:name="com.roundel.lazysteam.ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.roundel.lazysteam.ui.AddServerActivity">
+        <activity android:name="com.roundel.lazysteam.ui.activity.ServerSetupActivity">
         </activity>
         <activity
-            android:name="com.roundel.lazysteam.ui.ServerViewActivity"
+            android:name="com.roundel.lazysteam.ui.activity.ServerViewActivity"
             android:label="@string/title_activity_server_view"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
