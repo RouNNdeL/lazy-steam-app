@@ -21,28 +21,33 @@ import java.nio.charset.Charset;
 import java.util.Enumeration;
 import java.util.Objects;
 
+
+import static com.roundel.lazysteam.Constants.DISCOVERY_REQUEST;
+import static com.roundel.lazysteam.Constants.DISCOVERY_RESPONSE;
+import static com.roundel.lazysteam.Constants.JSON_COM;
+import static com.roundel.lazysteam.Constants.JSON_HOSTNAME;
+import static com.roundel.lazysteam.Constants.JSON_TCP_PORT;
+
 /**
  * Created by Krzysiek on 16/05/2017.
  */
 
+/**
+ * This thread is used to send a UDP broadcast and detect servers running on the local network, to
+ * receive status updates such as {@link ServerDiscoveryListener#onServerFound(LazyServer)
+ * onServerFound} implement the {@link ServerDiscoveryListener ServerDiscoveryListener} and set it
+ * using {@link #setServerDiscoveryListener(ServerDiscoveryListener) setServerDiscoveryListener}
+ * before starting the thread.
+ */
 public class ServerDiscoveryThread extends Thread
 {
     private static final String TAG = ServerDiscoveryThread.class.getSimpleName();
-
-    private static final String DISCOVERY_MESSAGE = "LAZY_STEAM_DISCOVERY_REQUEST";
-    private static final String DISCOVERY_RESPONSE = "LAZY_STEAM_DISCOVERY_RESPONSE";
-    private static final String JSON_COM = "com";
-    private static final String JSON_HOSTNAME = "server_hostname";
-    private static final String JSON_PORT = "communication_port";
 
     private DatagramSocket socket;
     private ServerDiscoveryListener listener;
 
     private int discoveryTimeout = 500;
 
-    /**
-     * This thread is used to send a UDP broadcast and detect servers running on the local network
-     */
     public ServerDiscoveryThread()
     {
     }
@@ -59,7 +64,9 @@ public class ServerDiscoveryThread extends Thread
 
             listener.onSocketOpened();
 
-            byte[] sendData = DISCOVERY_MESSAGE.getBytes(Charset.defaultCharset());
+            JSONObject json = new JSONObject();
+            json.put(JSON_COM, DISCOVERY_REQUEST);
+            byte[] sendData = json.toString().getBytes(Charset.defaultCharset());
 
             //Try the 255.255.255.255 first
             try
@@ -69,6 +76,7 @@ public class ServerDiscoveryThread extends Thread
             }
             catch(Exception e)
             {
+                e.printStackTrace();
             }
 
             // Broadcast the message over all the network interfaces
@@ -128,7 +136,7 @@ public class ServerDiscoveryThread extends Thread
                     {
                         String hostName = response.getString(JSON_HOSTNAME);
                         final String hostAddress = receivePacket.getAddress().getHostAddress();
-                        final int communicationPort = response.getInt(JSON_PORT);
+                        final int communicationPort = response.getInt(JSON_TCP_PORT);
 
                         Log.i(TAG, "New server \"" + hostName + "\"at:" + hostAddress + ":" + communicationPort);
 
@@ -158,6 +166,10 @@ public class ServerDiscoveryThread extends Thread
                 listener.onSocketClosed();
             e.printStackTrace();
             LogHelper.e(TAG, e.toString());
+        }
+        catch(JSONException e)
+        {
+            e.printStackTrace();
         }
     }
 

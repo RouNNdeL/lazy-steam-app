@@ -96,10 +96,10 @@ public class LazyServerAdapter extends RecyclerView.Adapter<LazyServerAdapter.Vi
             ));
         if(icon != null)
         {
-            if(server.getIcon() != null)
+            /*if(server.getIcon() != null)
                 icon.setImageDrawable(server.getIcon());
-            else
-                icon.setImageDrawable(mRecyclerView.getContext().getDrawable(R.drawable.ic_desktop_windows_black_24dp));
+            else*/
+            icon.setImageDrawable(mRecyclerView.getContext().getDrawable(R.drawable.ic_desktop_windows_black_24dp));
         }
 
     }
