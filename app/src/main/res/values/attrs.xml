@@ -4,4 +4,9 @@
     <attr name="alphaSecondary" format="float"/>
     <attr name="alphaPrimaryInverse" format="float"/>
     <attr name="alphaSecondaryInverse" format="float"/>
+
+    <declare-styleable name="MaxDimenRecyclerView">
+        <attr name="maxHeight" format="dimension"/>
+        <attr name="maxWidth" format="dimension"/>
+    </declare-styleable>
 </resources>

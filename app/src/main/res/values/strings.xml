@@ -4,5 +4,9 @@
     <string name="action_settings">Settings</string>
     <string name="setup_intro">You are about to start the connection process with the PC app (server),
         make sure the app is running and you are connected to the same network.</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in purus lorem. Praesent tristique fermentum eros a rutrum.
+        Morbi ut nisl in libero eleifend efficitur sit amet non nunc. Integer sagittis, libero quis vehicula lobortis, justo nisl consectetur turpis,
+        id vehicula enim ante faucibus augue. Aliquam at dapibus urna. Phasellus sed dolor sapien. Quisque molestie, risus eu blandit ornare, sem orci egestas mi,
+        vel lacinia sem elit sed orci. Pellentesque ut ipsum at urna sollicitudin euismod.</string>
 
 </resources>

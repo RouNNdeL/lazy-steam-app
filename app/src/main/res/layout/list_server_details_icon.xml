@@ -62,15 +62,15 @@
         android:id="@+id/server_host"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
-        android:layout_marginTop="8dp"
         android:contentDescription="server host"
         android:textAppearance="@style/TextAppearance.ListSecondary"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintBottom_toBottomOf="@+id/server_icon_bg"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@+id/server_name"
         app:layout_constraintRight_toRightOf="@+id/server_name"
-        app:layout_constraintTop_toBottomOf="@+id/server_name"
         tools:text="123.123.123.123:1234"/>
 
     <ImageView

@@ -52,6 +52,7 @@ public class ServerDiscoveryThread extends Thread
     {
     }
 
+    @SuppressWarnings("InfiniteLoopStatement")
     @Override
     public void run()
     {
@@ -99,14 +100,8 @@ public class ServerDiscoveryThread extends Thread
                     }
 
                     // Send the broadcast package!
-                    try
-                    {
-                        DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, broadcast, 8888);
-                        socket.send(sendPacket);
-                    }
-                    catch(Exception e)
-                    {
-                    }
+                    DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, broadcast, 8888);
+                    socket.send(sendPacket);
                 }
             }
 
