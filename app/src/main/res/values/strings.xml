@@ -8,5 +8,6 @@
         Morbi ut nisl in libero eleifend efficitur sit amet non nunc. Integer sagittis, libero quis vehicula lobortis, justo nisl consectetur turpis,
         id vehicula enim ante faucibus augue. Aliquam at dapibus urna. Phasellus sed dolor sapien. Quisque molestie, risus eu blandit ornare, sem orci egestas mi,
         vel lacinia sem elit sed orci. Pellentesque ut ipsum at urna sollicitudin euismod.</string>
+    <string name="setup_no_servers_hint">No servers found</string>
 
 </resources>

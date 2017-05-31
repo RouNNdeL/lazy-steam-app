@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.roundel.lazysteam.LazyServer;
 import com.roundel.lazysteam.R;
@@ -35,17 +36,30 @@ import butterknife.ButterKnife;
 
 public class ServerScanFragment extends Fragment implements ServerDiscoveryThread.ServerDiscoveryListener, LazyServerAdapter.ServerActionsListener
 {
+    /* TODO: Fix a weird bug causing the newly added server to show up for a sec and then disappear
+     *
+     * To reproduce:
+     * 1. Start the ServerSetupActivity
+     * 2. Let the app refresh for a while
+     * 3. Start the server
+     *
+     * The server should show up for a sec and then disappear,
+      * however the view is still there and it is clickable
+       * and will trigger the onServerSelected callback
+     */
 
     private static final int MAX_REFRESH_COUNT = 5;
     private final DialogInterface.OnClickListener mOnManualConnectionButtonClickListener = (dialog, which) ->
     {
         //TODO: Add a manual connection dialog
     };
+    private final View.OnClickListener mOnHelpClickedListener = v -> showHelpDialog();
     @BindView(R.id.setup_scan_recycler) RecyclerView mRecyclerView;
     @BindView(R.id.setup_scan_progress) ProgressBar mProgressBar;
     @BindView(R.id.setup_scan_progress_parent) FrameLayout mProgressContainer;
     @BindView(R.id.setup_scan_card) CardView mCardView;
     @BindView(R.id.setup_scan_help) LinearLayout mHelpLayout;
+    @BindView(R.id.setup_scan_no_servers) TextView mNoServersHint;
     private OnFragmentInteractionListener mListener;
     private LazyServerAdapter mAdapter;
     private ArrayList<LazyServer> mServerList = new ArrayList<>();
@@ -57,7 +71,6 @@ public class ServerScanFragment extends Fragment implements ServerDiscoveryThrea
         dialog.dismiss();
         forceRefresh();
     };
-    private final View.OnClickListener mOnHelpClickedListener = v -> showHelpDialog();
 
     public ServerScanFragment()
     {
@@ -208,6 +221,8 @@ public class ServerScanFragment extends Fragment implements ServerDiscoveryThrea
             mServerList.add(server);
             mAdapter.notifyItemInserted(mServerList.size() - 1);
         }
+
+        showNoServersHint(mServerList.size() == 0);
     }
 
     private void showHelpDialog()
@@ -232,7 +247,7 @@ public class ServerScanFragment extends Fragment implements ServerDiscoveryThrea
 
     private void refresh()
     {
-        if(mRefreshCount < MAX_REFRESH_COUNT)
+        if(mRefreshCount < MAX_REFRESH_COUNT || mServerList.size() == 0)
         {
             if(mDiscoveryThread == null || !mDiscoveryThread.isAlive())
             {
@@ -272,6 +287,18 @@ public class ServerScanFragment extends Fragment implements ServerDiscoveryThrea
         else if(!show && mProgressContainer.getVisibility() == View.VISIBLE)
         {
             mProgressContainer.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void showNoServersHint(boolean show)
+    {
+        if(show && mNoServersHint.getVisibility() == View.GONE)
+        {
+            mNoServersHint.setVisibility(View.VISIBLE);
+        }
+        else if(!show && mNoServersHint.getVisibility() == View.VISIBLE)
+        {
+            mNoServersHint.setVisibility(View.GONE);
         }
     }
 

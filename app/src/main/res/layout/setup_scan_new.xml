@@ -22,11 +22,6 @@
         android:id="@+id/setup_scan_help"
         android:layout_width="0dp"
         android:layout_height="44dp"
-        android:layout_marginBottom="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginStart="0dp"
         android:background="?android:selectableItemBackground"
         android:clickable="true"
         android:gravity="center"
@@ -54,31 +49,55 @@
             android:text="I can't see my PC"/>
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="16dp"
+        android:text="Your PC app should be showing it's name right now, select it from the list below."
+        android:textAppearance="@style/TextAppearance.ListPrimary"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/textView4"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"/>
+
     <android.support.v7.widget.CardView
         android:id="@+id/setup_scan_card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
         app:layout_constraintBottom_toTopOf="@+id/setup_scan_help"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@+id/textView6"
         app:layout_constraintRight_toRightOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView6">
 
-        <LinearLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/setup_scan_no_servers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/setup_no_servers_hint"
+                android:textAppearance="@style/TextAppearance.ListSecondary"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/setup_scan_recycler"
+                tools:layout_editor_absoluteY="154dp"/>
 
             <FrameLayout
                 android:id="@+id/setup_scan_progress_parent"
-                android:layout_width="match_parent"
-                android:layout_height="4dp">
+                android:layout_width="0dp"
+                android:layout_height="4dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="8dp">
 
                 <ProgressBar
                     android:id="@+id/setup_scan_progress"
@@ -95,28 +114,20 @@
 
             <com.roundel.lazysteam.view.MaxDimenRecyclerView
                 android:id="@+id/setup_scan_recycler"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:minHeight="72dp"
                 android:overScrollMode="never"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/setup_scan_progress_parent"
                 app:maxHeight="320dp"
                 tools:listitem="@layout/list_server_simple"/>
-        </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
 
 
     </android.support.v7.widget.CardView>
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginTop="16dp"
-        android:text="Your PC app should be showing it's name right now, select it from the list below."
-        android:textAppearance="@style/TextAppearance.ListPrimary"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="@+id/textView4"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"/>
 
 </android.support.constraint.ConstraintLayout>
